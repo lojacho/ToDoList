@@ -1,16 +1,5 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
-
-// function component() {
-//     const element = document.createElement('div');
-
-//     // Lodash, now imported by this script
-//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-//     return element;
-//   }
-
-//   document.body.appendChild(component());
 
 const toDoTasks = [
   {
@@ -45,14 +34,13 @@ const toDoTasks = [
   },
 ];
 
-const orderToDoTasks = toDoTasks.sort((a, b) => a.index > b.index ? 1 : -1);
+const orderToDoTasks = toDoTasks.sort((a, b) => (a.index > b.index ? 1 : -1));
 
 let bookgenerator = '';
-const listaUl = document.getElementById("list-ul");
+const listaUl = document.getElementById('list-ul');
 
-for (const key in orderToDoTasks) {
-  const element = orderToDoTasks[key];
-  bookgenerator += `<li >"${element.description}"</li>`;
+for (let i = 0; i < orderToDoTasks.length; i += 1) {
+  bookgenerator += `<li >"${orderToDoTasks[i].description}"</li>`;
 }
 
 listaUl.innerHTML = bookgenerator;
