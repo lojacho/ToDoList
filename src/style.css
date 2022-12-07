@@ -1,0 +1,54 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  padding: 5rem;
+
+}
+
+#toDoList {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+  border: darkgray solid 0.2rem;
+}
+
+.header {
+  padding: 0.5rem;
+}
+
+.taskAdd {
+  border: hidden;
+  font-style: italic;
+  color: gray; 
+}
+
+.taskAdd::placeholder {
+  color: lightgrey;
+  padding-left: 0.5rem;
+}
+
+#list-ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#list-ul li {
+  border-bottom: gainsboro solid 0.2rem;
+  padding: 0.5rem;
+}
+
+.footer {
+  text-align: center;
+  background-color: gainsboro;
+  padding: 1rem;
+  border-top: darkgray solid 0.2rem;
+  margin-top: -1.1rem;
+}
