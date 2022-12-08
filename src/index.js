@@ -1,6 +1,6 @@
 // import _, { isLength } from 'lodash';
 import './style.css';
-import Book from '../module/boo.js'
+import Book from '../module/bookClass.js'
 
 let description;
 let completed;
