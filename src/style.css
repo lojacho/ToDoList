@@ -22,15 +22,25 @@ body {
   padding: 0.5rem;
 }
 
+.addContainer {
+  display: flex;
+}
+
 .taskAdd {
   border: hidden;
   font-style: italic;
   color: gray;
+  flex: 1;
 }
 
 .taskAdd::placeholder {
   color: lightgrey;
   padding-left: 0.5rem;
+}
+
+#btnAdd {
+  margin-right: 1rem;
+  padding: 0 1rem;
 }
 
 #list-ul {
