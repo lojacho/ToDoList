@@ -1,12 +1,14 @@
-import _, { isLength } from 'lodash';
+// import _, { isLength } from 'lodash';
 import './style.css';
+
 let description;
 let completed;
 let index;
 let bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 let bookgenerator = '';
 const taskList = document.getElementById('taskList');
-let bookListDeleted=[];
+let bookListDeleted = [];
+const input = document.getElementById('myInput');
 
 class Book {
   constructor(description, completed, index) {
@@ -43,21 +45,19 @@ function remove(event) {
   if (remove) {
     const buttonID = Number(event.target.id);
     bookList = bookList.filter((book) => book.index !== buttonID);
-    bookListDeleted=[];
+    bookListDeleted = [];
     for (let i = 0; i < bookList.length; i += 1) {
-      const newBook = new Book(bookList[i].description, bookList[i].completed, i+1);
+      const newBook = new Book(bookList[i].description, bookList[i].completed, i + 1);
       bookListDeleted.push(newBook);
     }
     bookList = bookListDeleted;
-    console.log(bookList);
     localStorage.setItem('bookList', JSON.stringify(bookList));
     display(bookList);
   }
 }
 
-const input = document.getElementById("myInput");
-input.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
     getTask();
     addBook(description, completed, index);
     display(bookList);
@@ -69,16 +69,15 @@ btnAdd.addEventListener('click', () => {
   getTask();
   addBook(description, completed, index);
   display(bookList);
-})
+});
 
 taskList.addEventListener('click', remove);
 
-
-taskList.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
+taskList.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
     const edit = event.target.closest('INPUT');
     const editClass = Number(event.target.id) / 10;
-    let editTask = edit.value;
+    const editTask = edit.value;
     edit.value = editTask;
     bookList[editClass - 1].description = editTask;
     localStorage.setItem('bookList', JSON.stringify(bookList));
@@ -86,5 +85,3 @@ taskList.addEventListener("keypress", function (event) {
 });
 
 display(bookList);
-
-
