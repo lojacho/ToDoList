@@ -13,7 +13,7 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  min-width: 50%;
   gap: 1rem;
   border: darkgray solid 0.2rem;
 }
@@ -43,15 +43,24 @@ body {
   padding: 0 1rem;
 }
 
-#list-ul {
+#taskList {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-#list-ul li {
+#taskList div {
   border-bottom: gainsboro solid 0.2rem;
   padding: 0.5rem;
+  display: flex;
+}
+
+#taskList input {
+  border: none;
+}
+
+#taskList button {
+  margin-left: auto;
 }
 
 .footer {
