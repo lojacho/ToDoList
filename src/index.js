@@ -1,5 +1,6 @@
 // import _, { isLength } from 'lodash';
 import './style.css';
+import Book from '../module/boo.js'
 
 let description;
 let completed;
@@ -10,13 +11,6 @@ const taskList = document.getElementById('taskList');
 let bookListDeleted = [];
 const input = document.getElementById('myInput');
 
-class Book {
-  constructor(description, completed, index) {
-    this.description = description;
-    this.completed = completed;
-    this.index = index;
-  }
-}
 
 function getTask() {
   description = input.value;
