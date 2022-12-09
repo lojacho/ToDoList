@@ -1,7 +1,10 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/no-mutable-exports */
 // import _, { isLength } from 'lodash';
+
 import './style.css';
 import Book from '../module/bookClass.js';
-import {remove, bookListDeleted} from '../module/remove.js';
+import { remove, bookListDeleted } from '../module/remove.js';
 
 let description;
 let completed;
@@ -10,7 +13,6 @@ let bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 let bookgenerator = '';
 const taskList = document.getElementById('taskList');
 const input = document.getElementById('myInput');
-
 
 function getTask() {
   description = input.value;
@@ -49,11 +51,26 @@ btnAdd.addEventListener('click', () => {
   display(bookList);
 });
 
+function burbujeo(event) {
+  const removeBtn = event.target.closest('BUTTON');
+  let buttonID;
+  if (removeBtn) {
+    buttonID = Number(event.target.id);
+    return buttonID;
+  }
+  buttonID = false;
+  return buttonID;
+}
+
 taskList.addEventListener('click', (event) => {
-  remove(event);
-  bookList = bookListDeleted;
-  localStorage.setItem('bookList', JSON.stringify(bookList));
-  display(bookList);
+  event.stopPropagation();
+  const ID = burbujeo(event);
+  if (ID) {
+    remove(ID);
+    bookList = bookListDeleted;
+    localStorage.setItem('bookList', JSON.stringify(bookList));
+    display(bookList);
+  }
 });
 
 taskList.addEventListener('keypress', (event) => {
