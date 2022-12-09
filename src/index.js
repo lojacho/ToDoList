@@ -1,6 +1,7 @@
 // import _, { isLength } from 'lodash';
 import './style.css';
-import Book from '../module/bookClass.js'
+import Book from '../module/bookClass.js';
+import {remove, bookListDeleted} from '../module/remove.js';
 
 let description;
 let completed;
@@ -8,7 +9,6 @@ let index;
 let bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 let bookgenerator = '';
 const taskList = document.getElementById('taskList');
-let bookListDeleted = [];
 const input = document.getElementById('myInput');
 
 
@@ -34,22 +34,6 @@ function display(bookList) {
   taskList.innerHTML = bookgenerator;
 }
 
-function remove(event) {
-  const remove = event.target.closest('BUTTON');
-  if (remove) {
-    const buttonID = Number(event.target.id);
-    bookList = bookList.filter((book) => book.index !== buttonID);
-    bookListDeleted = [];
-    for (let i = 0; i < bookList.length; i += 1) {
-      const newBook = new Book(bookList[i].description, bookList[i].completed, i + 1);
-      bookListDeleted.push(newBook);
-    }
-    bookList = bookListDeleted;
-    localStorage.setItem('bookList', JSON.stringify(bookList));
-    display(bookList);
-  }
-}
-
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     getTask();
@@ -65,7 +49,12 @@ btnAdd.addEventListener('click', () => {
   display(bookList);
 });
 
-taskList.addEventListener('click', remove);
+taskList.addEventListener('click', (event) => {
+  remove(event);
+  bookList = bookListDeleted;
+  localStorage.setItem('bookList', JSON.stringify(bookList));
+  display(bookList);
+});
 
 taskList.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
@@ -79,3 +68,5 @@ taskList.addEventListener('keypress', (event) => {
 });
 
 display(bookList);
+
+export { bookList, Book };
