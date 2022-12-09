@@ -30,6 +30,7 @@ function display(bookList) {
   bookgenerator = '';
   for (let i = 0; i < bookList.length; i += 1) {
     bookgenerator += `<div>
+    <input type="checkbox" id="${bookList[i].index * 100}" name="taskCheck">
     <input type="text" id="${bookList[i].index * 10}" placeholder="${bookList[i].description}">
     <button type="button" id="${bookList[i].index}">Remove</button></div>`;
   }
@@ -63,7 +64,7 @@ function burbujeo(event) {
 }
 
 taskList.addEventListener('click', (event) => {
-  event.stopPropagation();
+  // event.stopPropagation();
   const ID = burbujeo(event);
   if (ID) {
     remove(ID);
@@ -83,6 +84,22 @@ taskList.addEventListener('keypress', (event) => {
     localStorage.setItem('bookList', JSON.stringify(bookList));
   }
 });
+
+taskList.addEventListener('click', (event) => {
+  const checkTask = event.target.closest('INPUT');
+  if (event.target.name){
+    let checkID;
+    if (checkTask.checked == true) {
+      checkID = Number(event.target.id) / 100;
+      bookList[checkID-1].completed = true;
+      localStorage.setItem('bookList', JSON.stringify(bookList));
+    } else if (checkTask.checked == false) {
+      checkID = Number(event.target.id) / 100;
+      bookList[checkID-1].completed = false;
+      localStorage.setItem('bookList', JSON.stringify(bookList));
+    }
+  }
+})
 
 display(bookList);
 
