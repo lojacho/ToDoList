@@ -78,7 +78,7 @@
 
 > Link to deployed project.
 
-- [Watch it in action](https://dgcuenca.github.io/AwesomeBookswithES6/)
+- [Watch it in action](https://dgcuenca.github.io/ToDoList/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
