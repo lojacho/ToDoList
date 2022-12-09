@@ -5,7 +5,7 @@
 import './style.css';
 import Book from '../module/bookClass.js';
 import { remove, bookListDeleted } from '../module/remove.js';
-import { clearAllTask, notCompleted  } from '../module/checkbox.js';
+import { clearAllTask, notCompleted } from '../module/checkbox.js';
 
 let description;
 let completed;
@@ -90,28 +90,26 @@ taskList.addEventListener('click', (event) => {
   const checkTask = event.target.closest('INPUT');
   if (event.target.name) {
     let checkID;
-    if (checkTask.checked == true) {
+    if (checkTask.checked === true) {
       checkID = Number(event.target.id) / 100;
       bookList[checkID - 1].completed = true;
       localStorage.setItem('bookList', JSON.stringify(bookList));
-    } else if (checkTask.checked == false) {
+    } else if (checkTask.checked === false) {
       checkID = Number(event.target.id) / 100;
       bookList[checkID - 1].completed = false;
       localStorage.setItem('bookList', JSON.stringify(bookList));
     }
   }
-})
+});
 
 const clearAll = document.querySelector('.footer');
 
 clearAll.addEventListener('click', () => {
   clearAllTask();
   bookList = notCompleted;
-  console.log(bookList)
   localStorage.setItem('bookList', JSON.stringify(bookList));
   display(bookList);
-})
-
+});
 
 display(bookList);
 
