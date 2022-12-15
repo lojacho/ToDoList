@@ -49,14 +49,6 @@ function burbujeo(event) {
 
 // Checking if a task need to be added
 
-input.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    getTask();
-    addBook(description, completed, index);
-    display(bookList);
-  }
-});
-
 btnAdd.addEventListener('click', (event) => {
   event.stopPropagation();
   getTask();
