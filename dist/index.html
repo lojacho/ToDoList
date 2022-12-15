@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>To Do List</title>
     <script src="./index.js" defer></script>
 <script defer src="main.js"></script></head>
 
 <body>
-    <div id="toDoList">
-        <div class="header">Today's To Do</div>
-        <div class="addContainer">
+    <main id="toDoList">
+        <header class="header">Today's To Do</header>
+        <form class="addContainer">
             <input type="text" class="taskAdd" id="myInput" placeholder="Add to your list...">
-            <button type="button" id="btnAdd">Add</button>
-        </div>
+            <button type="submit" id="btnAdd">Add</button>
+        </form>
         <ul id="taskList" class="toDoTasks"></ul>
-        <div class="footer">Clear all completed</div>
-    </div>
+        <footer class="footer">Clear all completed</footer>
+    </main>
 </body>
 
 </html>
