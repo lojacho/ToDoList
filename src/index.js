@@ -1,5 +1,3 @@
-// import _, { isLength } from 'lodash';
-
 import './style.css';
 import Book from '../module/bookClass.js';
 import remove from '../module/remove.js';
@@ -49,7 +47,7 @@ function burbujeo(event) {
   return buttonID;
 }
 
-// Checking if a task need to be added 
+// Checking if a task need to be added
 
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
@@ -71,7 +69,7 @@ btnAdd.addEventListener('click', (event) => {
 taskList.addEventListener('click', (event) => {
   const ID = burbujeo(event);
   if (ID) {
-    bookList = remove(ID);
+    bookList = remove(ID, bookList);
     localStorage.setItem('bookList', JSON.stringify(bookList));
     display(bookList);
   }
@@ -105,11 +103,9 @@ taskList.addEventListener('click', (event) => {
 });
 
 clearAll.addEventListener('click', () => {
-  bookList = clearAllTask();
+  bookList = clearAllTask(bookList);
   localStorage.setItem('bookList', JSON.stringify(bookList));
   display(bookList);
 });
 
 display(bookList);
-
-export { bookList, Book };

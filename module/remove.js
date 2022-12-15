@@ -1,9 +1,9 @@
-import { bookList, Book } from '../src/index.js';
+import Book from './bookClass.js';
 
 let bookListDeleted = [];
 let bookListFiltered = [];
 
-export default function remove(ID) {
+export default function remove(ID, bookList) {
   bookListFiltered = bookList.filter((book) => book.index !== ID);
   bookListDeleted = [];
   for (let i = 0; i < bookListFiltered.length; i += 1) {
