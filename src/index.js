@@ -29,8 +29,8 @@ function display(bookList) {
   bookgenerator = '';
   for (let i = 0; i < bookList.length; i += 1) {
     bookgenerator += `<li>
-    <input type="checkbox" id="${bookList[i].index}checkbox" name="taskCheck">
-    <input type="text" id="${bookList[i].index}task" placeholder="${bookList[i].description}">
+    <input  class="checkbox" type="checkbox" id="${bookList[i].index}checkbox" name="taskCheck">
+    <input type="text" id="${bookList[i].index}task" class="taskInput" placeholder="${bookList[i].description}">
     <button type="button" id="${bookList[i].index}">Remove</button></li>`;
   }
   taskList.innerHTML = bookgenerator;
