@@ -71,7 +71,7 @@ taskList.addEventListener('click', (event) => {
 taskList.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     const edit = event.target.closest('INPUT');
-    const editClass = Number(event.target.id.replace(/\D/g, ""));
+    const editClass = Number(event.target.id.replace(/\D/g, ''));
     const editTask = edit.value;
     edit.value = editTask;
     bookList[editClass - 1].description = editTask;
@@ -84,7 +84,7 @@ taskList.addEventListener('click', (event) => {
   if (event.target.name) {
     let checkID;
     if (checkTask.checked === true) {
-      checkID = Number(event.target.id.replace(/\D/g, ""));
+      checkID = Number(event.target.id.replace(/\D/g, ''));
       bookList[checkID - 1].completed = true;
       localStorage.setItem('bookList', JSON.stringify(bookList));
     } else if (checkTask.checked === false) {
