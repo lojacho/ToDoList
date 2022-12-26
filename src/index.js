@@ -28,10 +28,10 @@ function addBook(description, completed, index) {
 function display(bookList) {
   bookgenerator = '';
   for (let i = 0; i < bookList.length; i += 1) {
-    bookgenerator += `<div>
-    <input type="checkbox" id="${bookList[i].index * 100}" name="taskCheck">
-    <input type="text" id="${bookList[i].index * 10}" placeholder="${bookList[i].description}">
-    <button type="button" id="${bookList[i].index}">Remove</button></div>`;
+    bookgenerator += `<li>
+    <input type="checkbox" id="${bookList[i].index}checkbox" name="taskCheck">
+    <input type="text" id="${bookList[i].index}task" placeholder="${bookList[i].description}">
+    <button type="button" id="${bookList[i].index}">Remove</button></li>`;
   }
   taskList.innerHTML = bookgenerator;
 }
@@ -51,6 +51,7 @@ function burbujeo(event) {
 
 btnAdd.addEventListener('click', (event) => {
   event.stopPropagation();
+  event.preventDefault();
   getTask();
   addBook(description, completed, index);
   display(bookList);

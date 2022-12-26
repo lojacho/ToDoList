@@ -49,10 +49,19 @@ body {
   list-style-type: none;
 }
 
-#taskList div {
+#taskList li {
   border-bottom: gainsboro solid 0.2rem;
   padding: 0.5rem;
   display: flex;
+  list-style: none;
+}
+
+li:nth-child(even) {
+  background-color:white;
+}
+
+li:nth-child(odd) {
+  background-color:gainsboro;
 }
 
 #taskList input {
